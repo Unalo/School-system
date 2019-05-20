@@ -3,12 +3,14 @@ package net.school;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Learners extends Person {
+public class Learner extends Person {
 
     List<Subjects> subjectLists = new ArrayList<>();
 
-    public Learners(String first, String last, String email) {
+    public Learner(String first, String last, String email) {
         super(first, last, email);
+        firstName = first.substring(0,1).toUpperCase() + first.substring(1).toLowerCase();
+        lastName = last.substring(0,1).toUpperCase() + last.substring(1).toLowerCase();
     }
 
     public String registerSubjects(Subjects subject ) {

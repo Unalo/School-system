@@ -20,7 +20,7 @@ public class Person {
         return this.lastName;
     }
 
-    public String getEmaiAdress() {
+    public String getEmailAddress() {
         return this.emaiAdress;
     }
 }
