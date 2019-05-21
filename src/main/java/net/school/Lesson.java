@@ -36,9 +36,6 @@ public class Lesson {
 
     public String addLearners (Learner learner, Subjects subjects) {
 
-//        learnerSubjectListValidation(learner);
-//        learnerValidSubject()
-
         if (attendance.containsKey(learner)) {
             return learner.firstName + " is attending a " + attendance.get(learner) + " lesson";
         } else {
