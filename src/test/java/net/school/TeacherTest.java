@@ -7,28 +7,28 @@ import static org.junit.jupiter.api.Assertions.*;
 class TeacherTest {
 
     @Test
-    public void shouldGetFirstName() {
+    public void shouldGetFirstNameForTeacher() {
         Teacher teacher = new Teacher("Mr Alex","bayo","bayo@gmail.com");
 
         assertEquals("Mr Alex", teacher.getFirstName());
     }
 
     @Test
-    public void shouldGetLastName() {
+    public void shouldGetLastNameForTeacher() {
         Teacher teacher = new Teacher("Mr Alex","Thafeni","bayo@gmail.com");
 
         assertEquals("Thafeni", teacher.getLastName());
     }
 
     @Test
-    public void shouldGetEmail() {
+    public void shouldGetEmailForTeacher() {
         Teacher teacher = new Teacher("Mr Alex","Afzaal","Afzaal@gmail.com");
 
         assertEquals("Afzaal@gmail.com", teacher.getEmailAddress());
     }
 
     @Test
-    public void shouldBeAbleToAddSubjects(){
+    public void shouldBeAbleToAddSubjectsForTeacher(){
         Teacher teacher = new Teacher("Mr Alex","bayo","bayo@gmail.com");
 
         teacher.registerSubjects(Subjects.ECONOMICS);
@@ -49,7 +49,7 @@ class TeacherTest {
         assertEquals(teacher.getRegisteredSubjects().toString(),"[ECONOMICS, LIFE_SCIENCE, ENGLISH]");
     }
     @Test
-    public void shouldGetStudentDetails() {
+    public void shouldGetTeacherDetails() {
         Teacher teacher = new Teacher("Mr Alex","bayo","bayo@gmail.com");
 
         teacher.registerSubjects(Subjects.ECONOMICS);
