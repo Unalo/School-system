@@ -34,14 +34,15 @@ public class Lesson {
         }
     }
 
-    public String addLearners (Learner learner, Subjects subjects) {
+    public Map addLearners (Learner learner, Subjects subjects) {
 
         if (attendance.containsKey(learner)) {
-            return learner.firstName + " is attending a " + attendance.get(learner) + " lesson";
+            System.out.println(learner.firstName + " is attending a " + attendance.get(learner) + " lesson");
+//            return learner.firstName + " is attending a " + attendance.get(learner) + " lesson";
         } else {
             attendance.put(learner.firstName, subjects);
         }
-        return "Added student successful";
+        return attendance;
     }
 
     public String startLesson () {

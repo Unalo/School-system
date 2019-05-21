@@ -2,9 +2,6 @@ package net.school;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class LessonTest {
@@ -41,40 +38,40 @@ class LessonTest {
         assertEquals(lesson.learnerValidSubject(learner, Subjects.PHYSICAL_SCIENCE), learner.firstName + " Can't attend lesson, not registered for subject lesson");
     }
 
-//    @Test
-//    public void shouldAddStudentToLesson() {
-//        Lesson lesson = new Lesson();
-//
-//        Learner learner1 = new Learner("Inam", "bayo", "inam@gmail.com");
-//        Learner learner2 = new Learner("unalo", "khumalo", "khumalo@gmail.com");
-//        Learner learner3 = new Learner("asanda", "khumalo", "khumalo@gmail.com");
-//        Learner learner4 = new Learner("unalo", "khumalo", "khumalo@gmail.com");
-//
-//        lesson.addLearners(learner1, Subjects.PHYSICAL_SCIENCE);
-//        lesson.addLearners(learner2, Subjects.PHYSICAL_SCIENCE);
-//        lesson.addLearners(learner3, Subjects.PHYSICAL_SCIENCE);
-//        lesson.addLearners(learner4, Subjects.PHYSICAL_SCIENCE);
-//
-//        assertEquals(lesson.addLearners(learner4, Subjects.PHYSICAL_SCIENCE), "");
-//    }
-//
-//    @Test
-//    public void shouldStartLessonForGivenSubject() {
-//
-//        Lesson lesson = new Lesson();
-//
-//        Learner learner1 = new Learner("Inam", "bayo", "inam@gmail.com");
-//        Learner learner2 = new Learner("unalo", "khumalo", "khumalo@gmail.com");
-//        Learner learner3 = new Learner("asanda", "khumalo", "khumalo@gmail.com");
-//        Learner learner4 = new Learner("asanda", "khumalo", "khumalo@gmail.com");
-//        Learner learner5 = new Learner("asanda", "khumalo", "khumalo@gmail.com");
-//
-//        lesson.addLearners(learner1, Subjects.PHYSICAL_SCIENCE);
-//        lesson.addLearners(learner2, Subjects.PHYSICAL_SCIENCE);
-//        lesson.addLearners(learner3, Subjects.PHYSICAL_SCIENCE);
-//        lesson.addLearners(learner4, Subjects.PHYSICAL_SCIENCE);
-//        lesson.addLearners(learner5, Subjects.PHYSICAL_SCIENCE);
-//
-//        assertEquals(lesson.startLesson(), "");
-//    }
+    @Test
+    public void shouldAddStudentToLesson() {
+        Lesson lesson = new Lesson();
+
+        Learner learner1 = new Learner("Inam", "bayo", "inam@gmail.com");
+        Learner learner2 = new Learner("unalo", "khumalo", "khumalo@gmail.com");
+        Learner learner3 = new Learner("asanda", "khumalo", "khumalo@gmail.com");
+        Learner learner4 = new Learner("Bonga", "baloyi", "khumalo@gmail.com");
+
+        lesson.addLearners(learner1, Subjects.PHYSICAL_SCIENCE);
+        lesson.addLearners(learner2, Subjects.PHYSICAL_SCIENCE);
+        lesson.addLearners(learner3, Subjects.PHYSICAL_SCIENCE);
+        lesson.addLearners(learner4, Subjects.PHYSICAL_SCIENCE);
+
+        assertEquals(lesson.attendance.toString(), "{Asanda=PHYSICAL_SCIENCE, Inam=PHYSICAL_SCIENCE, Unalo=PHYSICAL_SCIENCE, Bonga=PHYSICAL_SCIENCE}");
+    }
+
+    @Test
+    public void shouldStartLessonForGivenSubject() {
+
+        Lesson lesson = new Lesson();
+
+        Learner learner1 = new Learner("Inam", "bayo", "inam@gmail.com");
+        Learner learner2 = new Learner("unalo", "khumalo", "khumalo@gmail.com");
+        Learner learner3 = new Learner("Asiphe", "khumalo", "khumalo@gmail.com");
+        Learner learner4 = new Learner("asanda", "khumalo", "khumalo@gmail.com");
+        Learner learner5 = new Learner("Bonga", "khumalo", "khumalo@gmail.com");
+
+        lesson.addLearners(learner1, Subjects.PHYSICAL_SCIENCE);
+        lesson.addLearners(learner2, Subjects.PHYSICAL_SCIENCE);
+        lesson.addLearners(learner3, Subjects.PHYSICAL_SCIENCE);
+        lesson.addLearners(learner4, Subjects.PHYSICAL_SCIENCE);
+        lesson.addLearners(learner5, Subjects.PHYSICAL_SCIENCE);
+
+        assertEquals(lesson.startLesson(), "successful");
+    }
 }

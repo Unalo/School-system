@@ -4,12 +4,12 @@ public class Person {
 
     String firstName;
     String lastName;
-    String emaiAdress;
+    String emailAddress;
 
     public Person(String  first, String last, String email) {
         firstName = first;
         lastName = last;
-        emaiAdress = email;
+        emailAddress = email;
     }
 
     public String getFirstName() {
@@ -21,6 +21,6 @@ public class Person {
     }
 
     public String getEmailAddress() {
-        return this.emaiAdress;
+        return this.emailAddress;
     }
 }
