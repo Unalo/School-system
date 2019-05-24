@@ -25,7 +25,18 @@
         </plugins>
     </build>
     <dependencies>
-
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.2.5</version>
+        </dependency>
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.2.6-SNAPSHOT</version> <!-- Java 8 -->
+<!--            <version>42.2.6.jre7-SNAPSHOT</version> &lt;!&ndash; Java 7 &ndash;&gt;-->
+<!--            <version>42.2.6.jre6-SNAPSHOT</version> &lt;!&ndash; Java 6 &ndash;&gt;-->
+        </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>

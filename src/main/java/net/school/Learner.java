@@ -7,6 +7,7 @@ public class Learner extends Person {
 
     List<Subjects> subjectLists = new ArrayList<>();
 
+
     public Learner(String first, String last, String email) {
         super(first, last, email);
         firstName = first.substring(0,1).toUpperCase() + first.substring(1).toLowerCase();
