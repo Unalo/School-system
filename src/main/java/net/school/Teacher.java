@@ -6,6 +6,7 @@ import java.util.List;
 public class Teacher extends Person {
 
     List<Subjects> teachersQualification = new ArrayList<>();
+    int token = 0;
 
     public Teacher(String first, String last, String email) {
         super(first, last, email);
@@ -24,6 +25,14 @@ public class Teacher extends Person {
 
     public List getRegisteredSubjects() {
         return teachersQualification;
+    }
+
+    public int giveToken() {
+        return this.token += 5;
+    }
+
+    public String getTokenBalance() {
+        return this.firstName + " you have "  + giveToken() + " Tokens";
     }
 
     public String getAllDetails() {

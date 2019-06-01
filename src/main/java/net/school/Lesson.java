@@ -1,44 +1,26 @@
 package net.school;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Lesson {
     public Lesson(Subjects subject) {
         this.subject = subject;
     }
 
-    List<String> attendanceList = new ArrayList<>();
-    public Map<String, Integer> studentTokens = new HashMap<>();
-    public Map<String, Integer> teacherTokens = new HashMap<>();
-    public Map<String, Subjects> studentNotes = new HashMap<>();
+    List<Learner> attendanceList = new ArrayList<>();
+    public Map<Learner, Integer> studentTokens = new HashMap<>();
+//    public Map<String, Integer> teacherTokens = new HashMap<>();
+//    public Map<Learner, Subjects> studentNotes = new HashMap<>();
     private final Subjects subject;
     private Teacher teacher;
+    private Learner learner;
 
 
-
-    public String teacherValidSubject(Teacher teacher) {
-
-        if (teacher.teachersQualification.contains(subject)) {
-            this.teacher = teacher;
-            return teacher.firstName + " You can start a lesson";
-        } else {
-            return teacher.firstName + " you don't qualify to teach this subject";
-        }
+    public Boolean teacherValidSubject(Teacher teacher) {
+        return teacher.teachersQualification.contains(subject);
     }
 
     public boolean learnerValidSubject(Learner learner) {
-
-        if (learner.subjectLists.contains(subject)) {
-            return true;
-//            return learner.firstName + " you can attend lesson";
-        } else {
-                return false;
-//            return learner.firstName + " Can't attend lesson, not registered for subject lesson";
-        }
-
-//        return true;
+        return learner.subjectLists.contains(subject);
     }
 
     public boolean learnerSubjectListValidation (Learner learner) {
@@ -46,9 +28,9 @@ public class Lesson {
     }
 
     public void addLearners (Learner learner) {
-        if(!attendanceList.contains(learner.firstName)) {
+        if(!attendanceList.contains(learner)) {
             if (learnerSubjectListValidation(learner) && learnerValidSubject(learner)) {
-                attendanceList.add(learner.firstName);
+                attendanceList.add(learner);
                 // return learner.firstName + " is attending a " + subject + " lesson";
             }
         } else {
@@ -56,42 +38,55 @@ public class Lesson {
         }
     }
 
+
     public String startLesson (int time, Teacher teacher) {
         this.teacher = teacher;
         if (teacher != null) {
-            if (attendanceList.size() >= 5) {
+                if (attendanceList.size() >= 5 && teacherValidSubject(teacher)) {
                 for (int i = 0; i < attendanceList.size(); i++) {
-                    System.out.println(attendanceList.get(i));
-                    if (studentTokens.containsKey(attendanceList.get(i))) {
-                        studentTokens.put(attendanceList.get(i), studentTokens.get(attendanceList.get(i) + 3));
-                    } else {
-                        studentTokens.put(attendanceList.get(i), 3);
+                    studentTokens.put(attendanceList.get(i), attendanceList.get(i).giveToken());
+//                    if (studentTokens.containsKey(attendanceList.get(i))) {
+//                        studentTokens.put(attendanceList.get(i), attendanceList.get(i).giveToken());
+//                    } else {
+//                        studentTokens.put(attendanceList.get(i), attendanceList.get(i).giveToken());
+//                    }
+                    attendanceList.get(i).studentNotes.add(subject);
+//                    System.out.println(attendanceList.get(i).getNotes());
                     }
-//                    if (studentNotes.containsValue(subject)) {
-//                        studentNotes.put(attendanceList.get(i), studentNotes.get(attendanceList.get(i) + subject));
-//                    }
-//                    else {
-//                        studentNotes.put(attendanceList.get(i), subject);
-//                    }
-                }
-                if (teacherTokens.containsKey(teacher)) {
-                    teacherTokens.put(teacher.firstName, teacherTokens.get(teacher) + 5);
-                }
-                else {
-                    teacherTokens.put(teacher.firstName, 5);
-                }
-                System.out.println(teacherTokens.toString());
+                    teacher.giveToken();
                     return "successful";
+                } else{
+                    return "cancelled";
+                }
             } else {
-                return "cancelled";
+                return "No teacher for the lesson";
             }
         }
-        else {
-            return "No teacher for the lesson";
+
+    public String buyNotes(Learner buyingLearner, Subjects notesToBuy, Learner receivingLearner ) {
+        if (learnerValidSubject(buyingLearner ) == true) {
+            if (buyingLearner.getTokenBalance() > 2 && learnerValidSubject(receivingLearner)) {
+                System.out.println(learnerValidSubject(receivingLearner ) + "*******************************");
+               int balance =  buyingLearner.getTokenBalance() - 2;
+               int addTokenToLearner = receivingLearner.getTokenBalance() + 2;
+                System.out.println(receivingLearner.getTokenBalance() + "tokens");
+                receivingLearner.studentNotes.remove(notesToBuy);
+                buyingLearner.studentNotes.add(notesToBuy);
+                //System.out.println(buyingLearner.firstName +  " you have " + buyingLearner.getNotes());
+               return receivingLearner.firstName +  " you have sell notes to " + buyingLearner.firstName ;
+            }
+            else {
+                return "You dont have enough tokens";
+            }
+        } else if (learnerValidSubject(buyingLearner) == false) {
+            if (buyingLearner.getTokenBalance() > 5 && learnerValidSubject(receivingLearner)) {
+
+            }
         }
+        return "";
     }
 
-    public void getReportForLesson() {
+    public void buy (Person person) {
 
     }
 }

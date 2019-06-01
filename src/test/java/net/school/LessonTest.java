@@ -1,10 +1,20 @@
 package net.school;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class LessonTest {
+
+    @BeforeEach
+    public void clearAll() {
+        try {
+
+        } catch (Exception e ) {
+        }
+    }
+
     @Test
     public void shouldValidateTeachersQualifications() {
         Teacher teacher = new Teacher("Mr Alex", "bayo", "bayo@gmail.com");
@@ -15,7 +25,7 @@ class LessonTest {
         teacher.registerSubjects(Subjects.LIFE_SCIENCE);
         teacher.registerSubjects(Subjects.ENGLISH);
 
-        assertEquals(lesson.teacherValidSubject(teacher), teacher.firstName + " You can start a lesson");
+        assertEquals(lesson.teacherValidSubject(teacher), true);
     }
 
     @Test
@@ -71,6 +81,8 @@ class LessonTest {
         lesson.addLearners(learner3);
         lesson.addLearners(learner4);
 
+        System.out.println(lesson.attendanceList.get(2).firstName);
+
         assertEquals(lesson.attendanceList.toString(), "[Inam, Unalo, Asanda, Bonga]");
     }
 
@@ -78,44 +90,221 @@ class LessonTest {
     public void shouldStartLessonForGivenSubject() {
 
         Lesson lesson = new Lesson(Subjects.PHYSICAL_SCIENCE);
-        Teacher teacher = new Teacher("Mr max", "Baloyi", "baloyi@gmail.com");
+        Teacher Baloyi = new Teacher("MR Max", "Baloyi", "baloyi@gmail.com");
 
-        Learner learner1 = new Learner("Inam", "bayo", "inam@gmail.com");
-        Learner learner2 = new Learner("unalo", "khumalo", "khumalo@gmail.com");
-        Learner learner3 = new Learner("Asiphe", "khumalo", "khumalo@gmail.com");
-        Learner learner4 = new Learner("asanda", "khumalo", "khumalo@gmail.com");
-        Learner learner5 = new Learner("Bonga", "khumalo", "khumalo@gmail.com");
+        Learner Inam = new Learner("Inam", "bayo", "bayo@gmail.com");
+        Learner unalo = new Learner("unalo", "Booi", "Booi@gmail.com");
+        Learner Asiphe = new Learner("Asiphe", "khumalo", "khumalo@gmail.com");
+        Learner asanda = new Learner("asanda", "Ndesi", "Ndesi@gmail.com");
+        Learner Bonga = new Learner("Bonga", "Mpani", "Mpani@gmail.com");
 
-        learner1.registerSubjects(Subjects.PHYSICAL_SCIENCE);
-        learner1.registerSubjects(Subjects.ENGLISH);
-        learner1.registerSubjects(Subjects.MATHEMATICS);
+        //********* Teacher **********
+        Baloyi.registerSubjects(Subjects.ECONOMICS);
+        Baloyi.registerSubjects(Subjects.HISTORY);
+        Baloyi.registerSubjects(Subjects.LIFE_SCIENCE);
+        Baloyi.registerSubjects(Subjects.PHYSICAL_SCIENCE);
 
-        learner2.registerSubjects(Subjects.PHYSICAL_SCIENCE);
-        learner2.registerSubjects(Subjects.LIFE_SCIENCE);
-        learner2.registerSubjects(Subjects.MATHEMATICS);
+        //********* Learners **********
+        Inam.registerSubjects(Subjects.PHYSICAL_SCIENCE);
+        Inam.registerSubjects(Subjects.ENGLISH);
+        Inam.registerSubjects(Subjects.MATHEMATICS);
 
-        learner3.registerSubjects(Subjects.MATHEMATICS);
-        learner3.registerSubjects(Subjects.PHYSICAL_SCIENCE);
-        learner3.registerSubjects(Subjects.HISTORY);
+        unalo.registerSubjects(Subjects.PHYSICAL_SCIENCE);
+        unalo.registerSubjects(Subjects.LIFE_SCIENCE);
+        unalo.registerSubjects(Subjects.MATHEMATICS);
 
-        learner4.registerSubjects(Subjects.ECONOMICS);
-        learner4.registerSubjects(Subjects.LIFE_SCIENCE);
-        learner4.registerSubjects(Subjects.PHYSICAL_SCIENCE);
+        Asiphe.registerSubjects(Subjects.MATHEMATICS);
+        Asiphe.registerSubjects(Subjects.PHYSICAL_SCIENCE);
+        Asiphe.registerSubjects(Subjects.HISTORY);
 
-        learner4.registerSubjects(Subjects.ENGLISH);
-        learner4.registerSubjects(Subjects.LIFE_SCIENCE);
-        learner4.registerSubjects(Subjects.PHYSICAL_SCIENCE);
+        asanda.registerSubjects(Subjects.ECONOMICS);
+        asanda.registerSubjects(Subjects.LIFE_SCIENCE);
+        asanda.registerSubjects(Subjects.PHYSICAL_SCIENCE);
 
-        learner5.registerSubjects(Subjects.ECONOMICS);
-        learner5.registerSubjects(Subjects.HISTORY);
-        learner5.registerSubjects(Subjects.PHYSICAL_SCIENCE);
+        Bonga.registerSubjects(Subjects.ENGLISH);
+        Bonga.registerSubjects(Subjects.LIFE_SCIENCE);
+        Bonga.registerSubjects(Subjects.PHYSICAL_SCIENCE);
 
-        lesson.addLearners(learner1);
-        lesson.addLearners(learner2);
-        lesson.addLearners(learner3);
-        lesson.addLearners(learner4);
-        lesson.addLearners(learner5);
+        // ********* Add learners to class *********
+        lesson.addLearners(Inam);
+        lesson.addLearners(unalo);
+        lesson.addLearners(Asiphe);
+        lesson.addLearners(asanda);
+        lesson.addLearners(Bonga);
 
-        assertEquals(lesson.startLesson(7, teacher), "successful");
+        System.out.println(Bonga.getTokenBalance());
+//        System.out.println(Bonga.getTokenBalance());
+//        System.out.println(Baloyi.getTokenBalance());
+
+        assertEquals(lesson.startLesson(7, Baloyi), "successful");
+    }
+
+    @Test
+    public void shouldGiveStudentsNotes() {
+
+        Lesson lesson = new Lesson(Subjects.PHYSICAL_SCIENCE);
+        Teacher Baloyi = new Teacher("MR Max", "Baloyi", "baloyi@gmail.com");
+
+        Learner Inam = new Learner("Inam", "bayo", "bayo@gmail.com");
+        Learner unalo = new Learner("unalo", "Booi", "Booi@gmail.com");
+        Learner Asiphe = new Learner("Asiphe", "khumalo", "khumalo@gmail.com");
+        Learner asanda = new Learner("asanda", "Ndesi", "Ndesi@gmail.com");
+        Learner Bonga = new Learner("Bonga", "Mpani", "Mpani@gmail.com");
+
+        //********* Teacher **********
+        Baloyi.registerSubjects(Subjects.ECONOMICS);
+        Baloyi.registerSubjects(Subjects.HISTORY);
+        Baloyi.registerSubjects(Subjects.LIFE_SCIENCE);
+        Baloyi.registerSubjects(Subjects.PHYSICAL_SCIENCE);
+
+        //********* Learners **********
+        Inam.registerSubjects(Subjects.PHYSICAL_SCIENCE);
+        Inam.registerSubjects(Subjects.ENGLISH);
+        Inam.registerSubjects(Subjects.MATHEMATICS);
+
+        unalo.registerSubjects(Subjects.PHYSICAL_SCIENCE);
+        unalo.registerSubjects(Subjects.LIFE_SCIENCE);
+        unalo.registerSubjects(Subjects.MATHEMATICS);
+
+        Asiphe.registerSubjects(Subjects.MATHEMATICS);
+        Asiphe.registerSubjects(Subjects.PHYSICAL_SCIENCE);
+        Asiphe.registerSubjects(Subjects.HISTORY);
+
+        asanda.registerSubjects(Subjects.ECONOMICS);
+        asanda.registerSubjects(Subjects.LIFE_SCIENCE);
+        asanda.registerSubjects(Subjects.PHYSICAL_SCIENCE);
+
+        Bonga.registerSubjects(Subjects.ENGLISH);
+        Bonga.registerSubjects(Subjects.LIFE_SCIENCE);
+        Bonga.registerSubjects(Subjects.PHYSICAL_SCIENCE);
+
+        // ********* Add learners to class *********
+        lesson.addLearners(Inam);
+        lesson.addLearners(unalo);
+        lesson.addLearners(Asiphe);
+        lesson.addLearners(asanda);
+        lesson.addLearners(Bonga);
+        // ********* Start alesson *********
+        lesson.startLesson(7 , Baloyi);
+
+        System.out.println(Inam.getTokenBalance());
+
+      //  lesson.buyNotes(Inam, Subjects.PHYSICAL_SCIENCE, Bonga);
+        System.out.println(lesson.buyNotes(Inam, Subjects.MATHEMATICS, Bonga));
+//        System.out.println(lesson.buyNotes(Inam, Subjects.ECONOMICS, Bonga));
+     //   System.out.println(Bonga.getTokenBalance());
+        System.out.println(Inam.getNotes());
+
+        System.out.println(Inam.getTokenBalance());
+
+        assertEquals(Bonga.getNotes(), "Bonga you have PHYSICAL_SCIENCE notes");
+    }
+
+    @Test
+    public void shouldGiveStudentTokens() {
+
+        Lesson lesson = new Lesson(Subjects.PHYSICAL_SCIENCE);
+        Teacher Baloyi = new Teacher("MR Max", "Baloyi", "baloyi@gmail.com");
+
+        Learner Inam = new Learner("Inam", "bayo", "bayo@gmail.com");
+        Learner unalo = new Learner("unalo", "Booi", "Booi@gmail.com");
+        Learner Asiphe = new Learner("Asiphe", "khumalo", "khumalo@gmail.com");
+        Learner asanda = new Learner("asanda", "Ndesi", "Ndesi@gmail.com");
+        Learner Bonga = new Learner("Bonga", "Mpani", "Mpani@gmail.com");
+
+        //********* Teacher **********
+        Baloyi.registerSubjects(Subjects.ECONOMICS);
+        Baloyi.registerSubjects(Subjects.HISTORY);
+        Baloyi.registerSubjects(Subjects.LIFE_SCIENCE);
+        Baloyi.registerSubjects(Subjects.PHYSICAL_SCIENCE);
+
+        //********* Learners **********
+        Inam.registerSubjects(Subjects.PHYSICAL_SCIENCE);
+        Inam.registerSubjects(Subjects.ENGLISH);
+        Inam.registerSubjects(Subjects.MATHEMATICS);
+
+        unalo.registerSubjects(Subjects.PHYSICAL_SCIENCE);
+        unalo.registerSubjects(Subjects.LIFE_SCIENCE);
+        unalo.registerSubjects(Subjects.MATHEMATICS);
+
+        Asiphe.registerSubjects(Subjects.MATHEMATICS);
+        Asiphe.registerSubjects(Subjects.PHYSICAL_SCIENCE);
+        Asiphe.registerSubjects(Subjects.HISTORY);
+
+        asanda.registerSubjects(Subjects.ECONOMICS);
+        asanda.registerSubjects(Subjects.LIFE_SCIENCE);
+        asanda.registerSubjects(Subjects.PHYSICAL_SCIENCE);
+
+        Bonga.registerSubjects(Subjects.ENGLISH);
+        Bonga.registerSubjects(Subjects.LIFE_SCIENCE);
+        Bonga.registerSubjects(Subjects.PHYSICAL_SCIENCE);
+
+        // ********* Add learners to class *********
+        lesson.addLearners(Inam);
+        lesson.addLearners(unalo);
+        lesson.addLearners(Asiphe);
+        lesson.addLearners(asanda);
+        lesson.addLearners(Bonga);
+
+        //********* Start lesson **********
+        lesson.startLesson(7,Baloyi);
+//        System.out.println(lesson.buyNotes(Bonga));
+
+        assertEquals(Bonga.getTokenBalance(), "Bonga you have 6 Tokens");
+    }
+
+    @Test
+    public void shouldGiveTeacherTokens() {
+
+        Lesson lesson = new Lesson(Subjects.PHYSICAL_SCIENCE);
+        Teacher Baloyi = new Teacher("MR Max", "Baloyi", "baloyi@gmail.com");
+
+        Learner Inam = new Learner("Inam", "bayo", "bayo@gmail.com");
+        Learner unalo = new Learner("unalo", "Booi", "Booi@gmail.com");
+        Learner Asiphe = new Learner("Asiphe", "khumalo", "khumalo@gmail.com");
+        Learner asanda = new Learner("asanda", "Ndesi", "Ndesi@gmail.com");
+        Learner Bonga = new Learner("Bonga", "Mpani", "Mpani@gmail.com");
+
+        //********* Teacher **********
+        Baloyi.registerSubjects(Subjects.ECONOMICS);
+        Baloyi.registerSubjects(Subjects.HISTORY);
+        Baloyi.registerSubjects(Subjects.LIFE_SCIENCE);
+        Baloyi.registerSubjects(Subjects.PHYSICAL_SCIENCE);
+
+        //********* Learners **********
+        Inam.registerSubjects(Subjects.PHYSICAL_SCIENCE);
+        Inam.registerSubjects(Subjects.ENGLISH);
+        Inam.registerSubjects(Subjects.MATHEMATICS);
+
+        unalo.registerSubjects(Subjects.PHYSICAL_SCIENCE);
+        unalo.registerSubjects(Subjects.LIFE_SCIENCE);
+        unalo.registerSubjects(Subjects.MATHEMATICS);
+
+        Asiphe.registerSubjects(Subjects.MATHEMATICS);
+        Asiphe.registerSubjects(Subjects.PHYSICAL_SCIENCE);
+        Asiphe.registerSubjects(Subjects.HISTORY);
+
+        asanda.registerSubjects(Subjects.ECONOMICS);
+        asanda.registerSubjects(Subjects.LIFE_SCIENCE);
+        asanda.registerSubjects(Subjects.PHYSICAL_SCIENCE);
+
+        Bonga.registerSubjects(Subjects.ENGLISH);
+        Bonga.registerSubjects(Subjects.LIFE_SCIENCE);
+        Bonga.registerSubjects(Subjects.PHYSICAL_SCIENCE);
+
+        // ********* Add learners to class *********
+        lesson.addLearners(Inam);
+        lesson.addLearners(unalo);
+        lesson.addLearners(Asiphe);
+        lesson.addLearners(asanda);
+        lesson.addLearners(Bonga);
+
+        //********* Start lesson **********
+        lesson.startLesson(7,Baloyi);
+
+
+
+
+        assertEquals(Baloyi.getTokenBalance(), "MR Max you have 10 Tokens");
     }
 }

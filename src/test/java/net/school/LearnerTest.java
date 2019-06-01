@@ -1,10 +1,13 @@
 package net.school;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class LearnerTest {
+
+    Learner thabang = new Learner("thabang", "J", "n/a");
 
     @Test
     public void shouldGetFirstNameFoeStudent() {
@@ -33,6 +36,11 @@ class LearnerTest {
         learner.registerSubjects(Subjects.ECONOMICS);
         learner.registerSubjects(Subjects.ENGLISH);
         assertEquals(learner.getRegisteredSubjects().toString(),"[ECONOMICS, ENGLISH]");
+
+        thabang.giveToken();
+        thabang.giveToken();
+
+
     }
 
     @Test
