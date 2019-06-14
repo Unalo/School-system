@@ -63,7 +63,7 @@ public class Lesson {
             }
         }
 
-    public String buyNotes(Learner buyingLearner, Subjects notesToBuy, Learner receivingLearner ) {
+    public String buyNotes(Learner buyingLearner, Subjects notesToBuy ) {
         if (learnerValidSubject(buyingLearner ) == true) {
             if (buyingLearner.getTokenBalance() > 2 && learnerValidSubject(receivingLearner)) {
                 System.out.println(learnerValidSubject(receivingLearner ) + "*******************************");

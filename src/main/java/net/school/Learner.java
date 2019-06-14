@@ -16,6 +16,18 @@ public class Learner extends Person {
         lastName = last.substring(0,1).toUpperCase() + last.substring(1).toLowerCase();
     }
 
+    public void buyNotes(Learner learner, Subjects subject) {
+        if(learner.studentNotes.contains(subject)) {
+            if(subjectLists.contains(subject) && token >= 2) { //check if unalo is registered
+               int balance =  learner.getTokenBalance() - 2;
+
+            } else if (token >= 5) {
+                //transaction
+                int Balance = learner.getTokenBalance() - 5;
+            }
+        }
+    }
+
     public String registerSubjects(Subjects subject ) {
         if (subjectLists.contains(subject)) {
             return "Oops already registered for subject";
