@@ -132,10 +132,6 @@ class LessonTest {
         lesson.addLearners(asanda);
         lesson.addLearners(Bonga);
 
-        System.out.println(Bonga.getTokenBalance());
-//        System.out.println(Bonga.getTokenBalance());
-//        System.out.println(Baloyi.getTokenBalance());
-
         assertEquals(lesson.startLesson(7, Baloyi), "successful");
     }
 
@@ -189,15 +185,11 @@ class LessonTest {
 
         System.out.println(Inam.getTokenBalance());
 
-      //  lesson.buyNotes(Inam, Subjects.PHYSICAL_SCIENCE, Bonga);
-      //  System.out.println(lesson.buyNotes(Inam, Subjects.MATHEMATICS, Bonga));
-//        System.out.println(lesson.buyNotes(Inam, Subjects.ECONOMICS, Bonga));
-     //   System.out.println(Bonga.getTokenBalance());
         System.out.println(Inam.getNotes());
 
         System.out.println(Inam.getTokenBalance());
 
-        assertEquals(Bonga.getNotes(), "Bonga you have PHYSICAL_SCIENCE notes");
+        assertEquals(Bonga.getNotes(), "Bonga you have PHYSICAL_SCIENCE, notes");
     }
 
     @Test
@@ -248,9 +240,9 @@ class LessonTest {
 
         //********* Start lesson **********
         lesson.startLesson(7,Baloyi);
-//        System.out.println(lesson.buyNotes(Bonga));
 
-        assertEquals(Bonga.getTokenBalance(), "Bonga you have 6 Tokens");
+
+        assertEquals(Bonga.getTokenBalance(), 6);
     }
 
     @Test
@@ -301,9 +293,6 @@ class LessonTest {
 
         //********* Start lesson **********
         lesson.startLesson(7,Baloyi);
-
-
-
 
         assertEquals(Baloyi.getTokenBalance(), "MR Max you have 10 Tokens");
     }

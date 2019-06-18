@@ -111,6 +111,6 @@ class LearnerTest {
         learner.registerSubjects(Subjects.LIFE_SCIENCE);
         learner.registerSubjects(Subjects.PHYSICAL_SCIENCE);
 
-        assertEquals( unalo.buyNotes(learner, Subjects.ECONOMICS), unalo.getNotes());
+        assertEquals( unalo.buyNotes(learner, Subjects.ECONOMICS), unalo.getTokenBalance());
     }
 }

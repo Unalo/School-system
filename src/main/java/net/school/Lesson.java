@@ -8,8 +8,7 @@ public class Lesson {
 
     List<Learner> attendanceList = new ArrayList<>();
     public Map<Learner, Integer> studentTokens = new HashMap<>();
-//    public Map<String, Integer> teacherTokens = new HashMap<>();
-//    public Map<Learner, Subjects> studentNotes = new HashMap<>();
+
     private final Subjects subject;
     private Teacher teacher;
     private Learner learner;
@@ -31,7 +30,6 @@ public class Lesson {
         if(!attendanceList.contains(learner)) {
             if (learnerSubjectListValidation(learner) && learnerValidSubject(learner)) {
                 attendanceList.add(learner);
-                // return learner.firstName + " is attending a " + subject + " lesson";
             }
         } else {
             System.out.println("Oops " +  learner.firstName + " you attending a " + subject + " lesson");
@@ -45,13 +43,7 @@ public class Lesson {
                 if (attendanceList.size() >= 5 && teacherValidSubject(teacher)) {
                 for (int i = 0; i < attendanceList.size(); i++) {
                     studentTokens.put(attendanceList.get(i), attendanceList.get(i).giveToken());
-//                    if (studentTokens.containsKey(attendanceList.get(i))) {
-//                        studentTokens.put(attendanceList.get(i), attendanceList.get(i).giveToken());
-//                    } else {
-//                        studentTokens.put(attendanceList.get(i), attendanceList.get(i).giveToken());
-//                    }
                     attendanceList.get(i).studentNotes.add(subject);
-//                    System.out.println(attendanceList.get(i).getNotes());
                     }
                     teacher.giveToken();
                     return "successful";
@@ -86,7 +78,4 @@ public class Lesson {
 //        return "";
 //    }
 
-    public void buy (Person person) {
-
-    }
 }
