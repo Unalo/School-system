@@ -16,16 +16,25 @@ public class Learner extends Person {
         lastName = last.substring(0,1).toUpperCase() + last.substring(1).toLowerCase();
     }
 
-    public void buyNotes(Learner learner, Subjects subject) {
-        if(learner.studentNotes.contains(subject)) {
-            if(subjectLists.contains(subject) && token >= 2) { //check if unalo is registered
+    public String buyNotes(Learner learner, Subjects subject) {
+        if(learner.subjectLists.contains(subject) == true) {
+            if(subjectLists.contains(subject) && learner.getTokenBalance() >= 2) { //check if unalo is registered
                int balance =  learner.getTokenBalance() - 2;
-
-            } else if (token >= 5) {
+               int unalo =  getTokenBalance() + 2;
+               learner.studentNotes.add(subject);
+               System.out.println(learner.firstName + " uzifumene notes");
+            }
+        } else if (learner.subjectLists.contains(subject) == false) {
+                if (subjectLists.contains(subject) && learner.getTokenBalance() >= 5) {
                 //transaction
                 int Balance = learner.getTokenBalance() - 5;
+                int unalo = getTokenBalance() + 5;
+                learner.studentNotes.add(subject);
+                System.out.println(learner.firstName + " zikhona notes");
             }
         }
+        System.out.println(subjectLists.contains(subject) && learner.getTokenBalance() >= 5);
+        return "notes sold";
     }
 
     public String registerSubjects(Subjects subject ) {
@@ -68,4 +77,6 @@ public class Learner extends Person {
         }
       return firstName + " you have registered for the following subjects " + studentSubjects ;
     }
+
+
 }

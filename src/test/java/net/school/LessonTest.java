@@ -190,7 +190,7 @@ class LessonTest {
         System.out.println(Inam.getTokenBalance());
 
       //  lesson.buyNotes(Inam, Subjects.PHYSICAL_SCIENCE, Bonga);
-        System.out.println(lesson.buyNotes(Inam, Subjects.MATHEMATICS, Bonga));
+      //  System.out.println(lesson.buyNotes(Inam, Subjects.MATHEMATICS, Bonga));
 //        System.out.println(lesson.buyNotes(Inam, Subjects.ECONOMICS, Bonga));
      //   System.out.println(Bonga.getTokenBalance());
         System.out.println(Inam.getNotes());

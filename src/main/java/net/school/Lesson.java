@@ -63,28 +63,28 @@ public class Lesson {
             }
         }
 
-    public String buyNotes(Learner buyingLearner, Subjects notesToBuy ) {
-        if (learnerValidSubject(buyingLearner ) == true) {
-            if (buyingLearner.getTokenBalance() > 2 && learnerValidSubject(receivingLearner)) {
-                System.out.println(learnerValidSubject(receivingLearner ) + "*******************************");
-               int balance =  buyingLearner.getTokenBalance() - 2;
-               int addTokenToLearner = receivingLearner.getTokenBalance() + 2;
-                System.out.println(receivingLearner.getTokenBalance() + "tokens");
-                receivingLearner.studentNotes.remove(notesToBuy);
-                buyingLearner.studentNotes.add(notesToBuy);
-                //System.out.println(buyingLearner.firstName +  " you have " + buyingLearner.getNotes());
-               return receivingLearner.firstName +  " you have sell notes to " + buyingLearner.firstName ;
-            }
-            else {
-                return "You dont have enough tokens";
-            }
-        } else if (learnerValidSubject(buyingLearner) == false) {
-            if (buyingLearner.getTokenBalance() > 5 && learnerValidSubject(receivingLearner)) {
-
-            }
-        }
-        return "";
-    }
+//    public String buyNotes(Learner buyingLearner, Subjects notesToBuy ) {
+//        if (learnerValidSubject(buyingLearner ) == true) {
+//            if (buyingLearner.getTokenBalance() > 2 && learnerValidSubject(receivingLearner)) {
+//                System.out.println(learnerValidSubject(receivingLearner ) + "*******************************");
+//               int balance =  buyingLearner.getTokenBalance() - 2;
+//               int addTokenToLearner = receivingLearner.getTokenBalance() + 2;
+//                System.out.println(receivingLearner.getTokenBalance() + "tokens");
+//                receivingLearner.studentNotes.remove(notesToBuy);
+//                buyingLearner.studentNotes.add(notesToBuy);
+//                //System.out.println(buyingLearner.firstName +  " you have " + buyingLearner.getNotes());
+//               return receivingLearner.firstName +  " you have sell notes to " + buyingLearner.firstName ;
+//            }
+//            else {
+//                return "You dont have enough tokens";
+//            }
+//        } else if (learnerValidSubject(buyingLearner) == false) {
+//            if (buyingLearner.getTokenBalance() > 5 && learnerValidSubject(receivingLearner)) {
+//
+//            }
+//        }
+//        return "";
+//    }
 
     public void buy (Person person) {
 
