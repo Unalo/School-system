@@ -59,4 +59,49 @@ class TeacherTest {
         teacher.registerSubjects(Subjects.PHYSICAL_SCIENCE);
         assertEquals(teacher.getAllDetails(),  teacher.getFirstName()+ " you have registered to teach the following subjects ECONOMICS, ENGLISH, MATHEMATICS, LIFE_SCIENCE, PHYSICAL_SCIENCE, ");
     }
+    @Test
+    public void shouldBeAbleToGiveTeacherTokensForLesson() {
+        Learner Inam = new Learner("Inam","bayo","inam@gmail.com");
+        Learner unalo = new Learner("unalo","bayo","unalo@gmail.com");
+        Learner sive = new Learner("sive", "mjanyana", "sive@gmail.com");
+        Learner anga = new Learner("anga", "bobo", "anga@gmail.com");
+        Learner asanda = new Learner("asanda", "Ndesi", "Ndesi@gmail.com");
+        Learner Bonga = new Learner("Bonga", "Mpani", "Mpani@gmail.com");
+
+        Teacher teacher = new Teacher("max", "funa", "funa@gmail.com");
+        teacher.registerSubjects(Subjects.ENGLISH);
+        teacher.registerSubjects(Subjects.ECONOMICS);
+        teacher.registerSubjects(Subjects.MATHEMATICS);
+        teacher.registerSubjects(Subjects.HISTORY);
+
+        unalo.registerSubjects(Subjects.ECONOMICS);
+        unalo.registerSubjects(Subjects.ENGLISH);
+        unalo.registerSubjects(Subjects.MATHEMATICS);
+
+        sive.registerSubjects(Subjects.ECONOMICS);
+        sive.registerSubjects(Subjects.PHYSICAL_SCIENCE);
+        sive.registerSubjects(Subjects.LIFE_SCIENCE);
+
+        anga.registerSubjects(Subjects.ECONOMICS);
+        anga.registerSubjects(Subjects.ENGLISH);
+        anga.registerSubjects(Subjects.HISTORY);
+
+        asanda.registerSubjects(Subjects.ECONOMICS);
+        asanda.registerSubjects(Subjects.LIFE_SCIENCE);
+        asanda.registerSubjects(Subjects.PHYSICAL_SCIENCE);
+
+        Bonga.registerSubjects(Subjects.ECONOMICS);
+        Bonga.registerSubjects(Subjects.LIFE_SCIENCE);
+        Bonga.registerSubjects(Subjects.PHYSICAL_SCIENCE);
+
+        Inam.registerSubjects(Subjects.ECONOMICS);
+        Inam.registerSubjects(Subjects.ENGLISH);
+        Inam.registerSubjects(Subjects.MATHEMATICS);
+
+        Lesson lesson = new Lesson(Subjects.ECONOMICS);
+        lesson.startLesson(5, teacher);
+
+        System.out.println(teacher.getTokenBalance());
+        assertEquals(teacher.getTokenBalance(),  "Mr Funa you have 5 Tokens");
+    }
 }

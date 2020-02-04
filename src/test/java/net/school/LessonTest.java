@@ -9,10 +9,8 @@ class LessonTest {
 
     @BeforeEach
     public void clearAll() {
-        try {
-
-        } catch (Exception e ) {
-        }
+        Lesson lesson = new Lesson( Subjects.ENGLISH);
+        lesson.clearStudentToken();
     }
 
     @Test
@@ -98,13 +96,11 @@ class LessonTest {
         Learner asanda = new Learner("asanda", "Ndesi", "Ndesi@gmail.com");
         Learner Bonga = new Learner("Bonga", "Mpani", "Mpani@gmail.com");
 
-        //********* Teacher **********
         Baloyi.registerSubjects(Subjects.ECONOMICS);
         Baloyi.registerSubjects(Subjects.HISTORY);
         Baloyi.registerSubjects(Subjects.LIFE_SCIENCE);
         Baloyi.registerSubjects(Subjects.PHYSICAL_SCIENCE);
 
-        //********* Learners **********
         Inam.registerSubjects(Subjects.PHYSICAL_SCIENCE);
         Inam.registerSubjects(Subjects.ENGLISH);
         Inam.registerSubjects(Subjects.MATHEMATICS);
@@ -125,7 +121,6 @@ class LessonTest {
         Bonga.registerSubjects(Subjects.LIFE_SCIENCE);
         Bonga.registerSubjects(Subjects.PHYSICAL_SCIENCE);
 
-        // ********* Add learners to class *********
         lesson.addLearners(Inam);
         lesson.addLearners(unalo);
         lesson.addLearners(Asiphe);
@@ -147,13 +142,11 @@ class LessonTest {
         Learner asanda = new Learner("asanda", "Ndesi", "Ndesi@gmail.com");
         Learner Bonga = new Learner("Bonga", "Mpani", "Mpani@gmail.com");
 
-        //********* Teacher **********
         Baloyi.registerSubjects(Subjects.ECONOMICS);
         Baloyi.registerSubjects(Subjects.HISTORY);
         Baloyi.registerSubjects(Subjects.LIFE_SCIENCE);
         Baloyi.registerSubjects(Subjects.PHYSICAL_SCIENCE);
 
-        //********* Learners **********
         Inam.registerSubjects(Subjects.PHYSICAL_SCIENCE);
         Inam.registerSubjects(Subjects.ENGLISH);
         Inam.registerSubjects(Subjects.MATHEMATICS);
@@ -174,13 +167,12 @@ class LessonTest {
         Bonga.registerSubjects(Subjects.LIFE_SCIENCE);
         Bonga.registerSubjects(Subjects.PHYSICAL_SCIENCE);
 
-        // ********* Add learners to class *********
         lesson.addLearners(Inam);
         lesson.addLearners(unalo);
         lesson.addLearners(Asiphe);
         lesson.addLearners(asanda);
         lesson.addLearners(Bonga);
-        // ********* Start alesson *********
+
         lesson.startLesson(7 , Baloyi);
 
         System.out.println(Inam.getTokenBalance());
@@ -193,56 +185,48 @@ class LessonTest {
     }
 
     @Test
-    public void shouldGiveStudentTokens() {
-
-        Lesson lesson = new Lesson(Subjects.PHYSICAL_SCIENCE);
-        Teacher Baloyi = new Teacher("MR Max", "Baloyi", "baloyi@gmail.com");
-
-        Learner Inam = new Learner("Inam", "bayo", "bayo@gmail.com");
-        Learner unalo = new Learner("unalo", "Booi", "Booi@gmail.com");
-        Learner Asiphe = new Learner("Asiphe", "khumalo", "khumalo@gmail.com");
+    public void shouldBeAbleToGiveStudentsTokensForAttendingLesson() {
+        Learner Inam = new Learner("Inam","bayo","inam@gmail.com");
+        Learner unalo = new Learner("unalo","bayo","unalo@gmail.com");
+        Learner sive = new Learner("sive", "mjanyana", "sive@gmail.com");
+        Learner anga = new Learner("anga", "bobo", "anga@gmail.com");
         Learner asanda = new Learner("asanda", "Ndesi", "Ndesi@gmail.com");
         Learner Bonga = new Learner("Bonga", "Mpani", "Mpani@gmail.com");
 
-        //********* Teacher **********
-        Baloyi.registerSubjects(Subjects.ECONOMICS);
-        Baloyi.registerSubjects(Subjects.HISTORY);
-        Baloyi.registerSubjects(Subjects.LIFE_SCIENCE);
-        Baloyi.registerSubjects(Subjects.PHYSICAL_SCIENCE);
+        Teacher teacher = new Teacher("max", "funa", "funa@gmail.com");
+        teacher.registerSubjects(Subjects.ENGLISH);
+        teacher.registerSubjects(Subjects.ECONOMICS);
+        teacher.registerSubjects(Subjects.MATHEMATICS);
+        teacher.registerSubjects(Subjects.HISTORY);
 
-        //********* Learners **********
-        Inam.registerSubjects(Subjects.PHYSICAL_SCIENCE);
-        Inam.registerSubjects(Subjects.ENGLISH);
-        Inam.registerSubjects(Subjects.MATHEMATICS);
-
-        unalo.registerSubjects(Subjects.PHYSICAL_SCIENCE);
-        unalo.registerSubjects(Subjects.LIFE_SCIENCE);
+        unalo.registerSubjects(Subjects.ECONOMICS);
+        unalo.registerSubjects(Subjects.ENGLISH);
         unalo.registerSubjects(Subjects.MATHEMATICS);
 
-        Asiphe.registerSubjects(Subjects.MATHEMATICS);
-        Asiphe.registerSubjects(Subjects.PHYSICAL_SCIENCE);
-        Asiphe.registerSubjects(Subjects.HISTORY);
+        sive.registerSubjects(Subjects.ECONOMICS);
+        sive.registerSubjects(Subjects.PHYSICAL_SCIENCE);
+        sive.registerSubjects(Subjects.LIFE_SCIENCE);
+
+        anga.registerSubjects(Subjects.ECONOMICS);
+        anga.registerSubjects(Subjects.ENGLISH);
+        anga.registerSubjects(Subjects.HISTORY);
 
         asanda.registerSubjects(Subjects.ECONOMICS);
         asanda.registerSubjects(Subjects.LIFE_SCIENCE);
         asanda.registerSubjects(Subjects.PHYSICAL_SCIENCE);
 
-        Bonga.registerSubjects(Subjects.ENGLISH);
+        Bonga.registerSubjects(Subjects.ECONOMICS);
         Bonga.registerSubjects(Subjects.LIFE_SCIENCE);
         Bonga.registerSubjects(Subjects.PHYSICAL_SCIENCE);
 
-        // ********* Add learners to class *********
-        lesson.addLearners(Inam);
-        lesson.addLearners(unalo);
-        lesson.addLearners(Asiphe);
-        lesson.addLearners(asanda);
-        lesson.addLearners(Bonga);
+        Inam.registerSubjects(Subjects.ECONOMICS);
+        Inam.registerSubjects(Subjects.ENGLISH);
+        Inam.registerSubjects(Subjects.MATHEMATICS);
 
-        //********* Start lesson **********
-        lesson.startLesson(7,Baloyi);
+        Lesson lesson = new Lesson(Subjects.ECONOMICS);
+        lesson.startLesson(5, teacher);
 
-
-        assertEquals(Bonga.getTokenBalance(), 6);
+        assertEquals(3,  Inam.getTokenBalance());
     }
 
     @Test
@@ -257,13 +241,11 @@ class LessonTest {
         Learner asanda = new Learner("asanda", "Ndesi", "Ndesi@gmail.com");
         Learner Bonga = new Learner("Bonga", "Mpani", "Mpani@gmail.com");
 
-        //********* Teacher **********
         Baloyi.registerSubjects(Subjects.ECONOMICS);
         Baloyi.registerSubjects(Subjects.HISTORY);
         Baloyi.registerSubjects(Subjects.LIFE_SCIENCE);
         Baloyi.registerSubjects(Subjects.PHYSICAL_SCIENCE);
 
-        //********* Learners **********
         Inam.registerSubjects(Subjects.PHYSICAL_SCIENCE);
         Inam.registerSubjects(Subjects.ENGLISH);
         Inam.registerSubjects(Subjects.MATHEMATICS);
@@ -284,16 +266,14 @@ class LessonTest {
         Bonga.registerSubjects(Subjects.LIFE_SCIENCE);
         Bonga.registerSubjects(Subjects.PHYSICAL_SCIENCE);
 
-        // ********* Add learners to class *********
         lesson.addLearners(Inam);
         lesson.addLearners(unalo);
         lesson.addLearners(Asiphe);
         lesson.addLearners(asanda);
         lesson.addLearners(Bonga);
 
-        //********* Start lesson **********
         lesson.startLesson(7,Baloyi);
 
-        assertEquals(Baloyi.getTokenBalance(), "MR Max you have 10 Tokens");
+        assertEquals(Baloyi.getTokenBalance(), "Mr Baloyi you have 10 Tokens");
     }
 }

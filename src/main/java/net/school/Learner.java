@@ -2,6 +2,9 @@ package net.school;
 
 import java.util.ArrayList;
 import java.util.List;
+//import net.school.Lesson;
+
+//import static net.school.Lesson.studentTokens;
 
 public class Learner extends Person {
 
@@ -10,13 +13,17 @@ public class Learner extends Person {
 
     public int token = 0;
 
+    public void clearStudentNotes() {
+
+    }
+
     public Learner(String first, String last, String email) {
         super(first, last, email);
         firstName = first.substring(0,1).toUpperCase() + first.substring(1).toLowerCase();
         lastName = last.substring(0,1).toUpperCase() + last.substring(1).toLowerCase();
     }
 
-    public String buyNotes(Learner learner, Subjects subject) {
+    public int buyNotes(Learner learner, Subjects subject) {
         if(learner.subjectLists.contains(subject) == true) {
             if(subjectLists.contains(subject) && learner.getTokenBalance() >= 2) { //check if unalo is registered
                int balance =  learner.getTokenBalance() - 2;
@@ -34,7 +41,8 @@ public class Learner extends Person {
             }
         }
         System.out.println(subjectLists.contains(subject) && learner.getTokenBalance() >= 5);
-        return "notes sold";
+        System.out.println("notes sold");
+        return getTokenBalance();
     }
 
     public String registerSubjects(Subjects subject ) {
@@ -56,11 +64,18 @@ public class Learner extends Person {
 
     public void giveNotes(Subjects subjects) {
        studentNotes.add(subjects);
+
     }
 
     public int getTokenBalance() {
-        return giveToken();
+//        for (Integer tokens: studentTokens.values()) {
+//            System.out.println(tokens + " " + lastName);
+//        }
+        return this.giveToken();
+
     }
+//
+//    return
 
     public String getNotes() {
         String notes= "";

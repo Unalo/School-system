@@ -32,7 +32,7 @@ public class Teacher extends Person {
     }
 
     public String getTokenBalance() {
-        return this.firstName + " you have "  + giveToken() + " Tokens";
+        return  "Mr " + this.lastName + " you have "  + giveToken() + " Tokens";
     }
 
     public String getAllDetails() {

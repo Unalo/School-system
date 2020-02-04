@@ -7,12 +7,16 @@ public class Lesson {
     }
 
     List<Learner> attendanceList = new ArrayList<>();
-    public Map<Learner, Integer> studentTokens = new HashMap<>();
+    public static Map<Learner, Integer> studentTokens = new HashMap<>();
 
     private final Subjects subject;
     private Teacher teacher;
     private Learner learner;
 
+    public void clearStudentToken() {
+        studentTokens.clear();
+        System.out.println(studentTokens.size() + " cleared");
+    }
 
     public Boolean teacherValidSubject(Teacher teacher) {
         return teacher.teachersQualification.contains(subject);
@@ -42,8 +46,14 @@ public class Lesson {
         if (teacher != null) {
                 if (attendanceList.size() >= 5 && teacherValidSubject(teacher)) {
                 for (int i = 0; i < attendanceList.size(); i++) {
+//                    Learner unalo = attendanceList.get(i);
+
+                    attendanceList.get(i).giveToken();
+                    System.out.println(attendanceList.get(i).getTokenBalance() + " Token balance");
+
                     studentTokens.put(attendanceList.get(i), attendanceList.get(i).giveToken());
                     attendanceList.get(i).studentNotes.add(subject);
+                    System.out.println( "tokens " +studentTokens);
                     }
                     teacher.giveToken();
                     return "successful";
