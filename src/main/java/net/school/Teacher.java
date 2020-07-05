@@ -1,12 +1,15 @@
 package net.school;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Teacher extends Person {
-
+    public  Map<String, Integer> tokenBalance = new HashMap<String, Integer>();
     List<Subjects> teachersQualification = new ArrayList<>();
     int token = 0;
+    private Teacher teacher;
 
     public Teacher(String first, String last, String email) {
         super(first, last, email);
@@ -14,7 +17,6 @@ public class Teacher extends Person {
     }
 
     public String registerSubjects(Subjects subject ) {
-
         if (teachersQualification.contains(subject)) {
             return "Oops already registered for subject";
         } else {
@@ -27,12 +29,18 @@ public class Teacher extends Person {
         return teachersQualification;
     }
 
-    public int giveToken() {
-        return this.token += 5;
+    public void giveToken(Teacher teacher) {
+        this.teacher = teacher;
+        tokenBalance.put(teacher.getLastName() , token += 5);
+        System.out.println(tokenBalance.toString());
     }
 
     public String getTokenBalance() {
-        return  "Mr " + this.lastName + " you have "  + giveToken() + " Tokens";
+        int balance = 0;
+        for (int bal : tokenBalance.values()) {
+            balance = bal;
+        }
+        return  "Mr " + this.lastName + " you have "  + balance + " Tokens";
     }
 
     public String getAllDetails() {

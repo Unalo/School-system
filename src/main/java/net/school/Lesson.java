@@ -18,6 +18,14 @@ public class Lesson {
         System.out.println(studentTokens.size() + " cleared");
     }
 
+    public String toString() {
+        String name = "";
+        for (int i = 0; i<attendanceList.size(); i++) {
+            name += attendanceList.get(i).getFirstName() + " ";
+        }
+        return name;
+    }
+
     public Boolean teacherValidSubject(Teacher teacher) {
         return teacher.teachersQualification.contains(subject);
     }
@@ -48,14 +56,14 @@ public class Lesson {
                 for (int i = 0; i < attendanceList.size(); i++) {
 //                    Learner unalo = attendanceList.get(i);
 
-                    attendanceList.get(i).giveToken();
+                    attendanceList.get(i).giveToken(attendanceList.get(i));
                     System.out.println(attendanceList.get(i).getTokenBalance() + " Token balance");
 
-                    studentTokens.put(attendanceList.get(i), attendanceList.get(i).giveToken());
+                   // studentTokens.put(attendanceList.get(i), attendanceList.get(i).giveToken(attendanceList.get(i)));
                     attendanceList.get(i).studentNotes.add(subject);
-                    System.out.println( "tokens " +studentTokens);
+                  //  System.out.println( "tokens " +studentTokens);
                     }
-                    teacher.giveToken();
+                    teacher.giveToken(teacher);
                     return "successful";
                 } else{
                     return "cancelled";

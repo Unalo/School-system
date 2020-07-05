@@ -1,17 +1,20 @@
 package net.school;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 //import net.school.Lesson;
 
 //import static net.school.Lesson.studentTokens;
 
 public class Learner extends Person {
-
+    public Map<String, Integer> tokenBalance = new HashMap<String, Integer>();
     List<Subjects> subjectLists = new ArrayList<>();
     List<Subjects> studentNotes = new ArrayList<>();
 
     public int token = 0;
+    private Learner learner;
 
     public void clearStudentNotes() {
 
@@ -58,8 +61,10 @@ public class Learner extends Person {
         return subjectLists;
     }
 
-    public int giveToken() {
-        return this.token += 3;
+    public void giveToken(Learner learner) {
+        this.learner = learner;
+        tokenBalance.put(learner.getFirstName() , token += 3);
+        System.out.println(tokenBalance.toString());
     }
 
     public void giveNotes(Subjects subjects) {
@@ -68,14 +73,13 @@ public class Learner extends Person {
     }
 
     public int getTokenBalance() {
-//        for (Integer tokens: studentTokens.values()) {
-//            System.out.println(tokens + " " + lastName);
-//        }
-        return this.giveToken();
-
+        int balance = 0;
+        for (int bal : tokenBalance.values()) {
+            balance = bal;
+        }
+        System.out.println("Dear Student, last name : " + this.lastName + " you have "  + balance + " Tokens");
+        return  balance;
     }
-//
-//    return
 
     public String getNotes() {
         String notes= "";
@@ -90,8 +94,6 @@ public class Learner extends Person {
         for (int i= 0; i<subjectLists.size(); i++) {
            studentSubjects += subjectLists.get(i) + ", ";
         }
-      return firstName + " you have registered for the following subjects " + studentSubjects ;
+      return firstName + " " + lastName + " Email Address : " + emailAddress + "." + " you have registered for the following subjects " + studentSubjects ;
     }
-
-
 }

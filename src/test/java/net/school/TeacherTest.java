@@ -68,11 +68,13 @@ class TeacherTest {
         Learner asanda = new Learner("asanda", "Ndesi", "Ndesi@gmail.com");
         Learner Bonga = new Learner("Bonga", "Mpani", "Mpani@gmail.com");
 
-        Teacher teacher = new Teacher("max", "funa", "funa@gmail.com");
-        teacher.registerSubjects(Subjects.ENGLISH);
-        teacher.registerSubjects(Subjects.ECONOMICS);
-        teacher.registerSubjects(Subjects.MATHEMATICS);
-        teacher.registerSubjects(Subjects.HISTORY);
+        Teacher Msiyana = new Teacher("max", "funa", "funa@gmail.com");
+        Lesson lesson = new Lesson(Subjects.ECONOMICS);
+
+        Msiyana.registerSubjects(Subjects.ENGLISH);
+        Msiyana.registerSubjects(Subjects.ECONOMICS);
+        Msiyana.registerSubjects(Subjects.MATHEMATICS);
+        Msiyana.registerSubjects(Subjects.HISTORY);
 
         unalo.registerSubjects(Subjects.ECONOMICS);
         unalo.registerSubjects(Subjects.ENGLISH);
@@ -98,10 +100,16 @@ class TeacherTest {
         Inam.registerSubjects(Subjects.ENGLISH);
         Inam.registerSubjects(Subjects.MATHEMATICS);
 
-        Lesson lesson = new Lesson(Subjects.ECONOMICS);
-        lesson.startLesson(5, teacher);
+        lesson.addLearners(unalo);
+        lesson.addLearners(sive);
+        lesson.addLearners(anga);
+        lesson.addLearners(asanda);
+        lesson.addLearners(Bonga);
+        lesson.addLearners(Inam);
 
-        System.out.println(teacher.getTokenBalance());
-        assertEquals(teacher.getTokenBalance(),  "Mr Funa you have 5 Tokens");
+        lesson.startLesson(5, Msiyana);
+
+        System.out.println(Msiyana.getTokenBalance());
+        assertEquals(Msiyana.getTokenBalance(),  "Mr Funa you have 5 Tokens");
     }
 }
